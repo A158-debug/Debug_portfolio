@@ -1,9 +1,9 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 
 import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { client } from "../../client";
+// import { client } from "../../client";
 import "./Footer.scss";
 
 const Footer = () => {
@@ -16,37 +16,48 @@ const Footer = () => {
   const [loading, setLoading] = useState(false);
 
   const { username, email, message } = formData;
- 
-  useEffect(() => emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_TOKEN_ID), []);
- 
-  const handleSubmit = async(e) => {
+
+  useEffect(
+    () => emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_TOKEN_ID),
+    []
+  );
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const contact = {
-      _type: "contact",
-      name: formData.username,
-      email: formData.email,
-      message: formData.message,
-    };
+    // const contact = {
+    //   _type: "contact",
+    //   name: formData.username,
+    //   email: formData.email,
+    //   message: formData.message,
+    // };
 
     emailjs
-      .send(process.env.REACT_APP_EMAILJS_SERVICE_ID, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, {
-        name: formData.name,
-        message: formData.message,
-        subject: "Important Message",
-        email: formData.email,
-      })
-      .then((res) => console.log( "Message sent successfully"))
-      .catch((e) => console.log(e));
-
-    client
-      .create(contact)
+      .send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          message: formData.message,
+          subject: "Important Message",
+          email: formData.email,
+        }
+      )
+      .then((res) => console.log("Message sent successfully"))
       .then(() => {
         setLoading(false);
         setIsFormSubmitted(true);
       })
-      .catch((err) => console.log(err));
+      .catch((e) => console.log(e));
+
+    // client
+    //   .create(contact)
+    //   .then(() => {
+    //     setLoading(false);
+    //     setIsFormSubmitted(true);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   return (
@@ -77,7 +88,9 @@ const Footer = () => {
               placeholder="Your Name"
               name="username"
               value={username}
-              onChange={(e)=> setFormData({ ...formData,name: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
             />
           </div>
           <div className="app__flex">
@@ -87,7 +100,9 @@ const Footer = () => {
               placeholder="Your Email"
               name="email"
               value={email}
-              onChange={(e)=> setFormData({ ...formData,email: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
             />
           </div>
           <div>
@@ -96,7 +111,9 @@ const Footer = () => {
               placeholder="Your Message"
               value={message}
               name="message"
-              onChange={(e)=> setFormData({ ...formData,message: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
             />
           </div>
           <button type="button" className="p-text" onClick={handleSubmit}>
@@ -105,7 +122,9 @@ const Footer = () => {
         </form>
       ) : (
         <div>
-          <h3 className="head-text">Thank you for getting in touch! Contact you soon</h3>
+          <h3 className="head-text">
+            Thank you for getting in touch! Contact you soon
+          </h3>
         </div>
       )}
     </>

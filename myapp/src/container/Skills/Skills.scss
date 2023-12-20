@@ -5,9 +5,8 @@
   }
   
   .app__skills-container {
-    width: 90%;
+    width: 100%;
     margin-top: 3rem;
-  
     display: flex;
     flex-direction: row;
   
@@ -18,12 +17,11 @@
   }
   
   .app__skills-list {
-    flex: 1;
+    flex: 1.2;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
-  
     margin-right: 5rem;
   
     @media screen and (max-width: 900px) {
@@ -36,9 +34,7 @@
   .app__skills-item {
     flex-direction: column;
     text-align: center;
-  
     margin: 1rem;
-  
     transition: all 0.3s ease-in-out;
   
     div {

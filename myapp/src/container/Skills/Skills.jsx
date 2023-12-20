@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-// import { Tooltip  } from 'react-tooltip';
+import { Tooltip  } from 'react-tooltip';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
@@ -26,7 +26,6 @@ const Skills = () => {
   return (
     <>
       <h2 className="head-text">Skills & Experiences</h2>
-
       <div className="app__skills-container">
         <motion.div className="app__skills-list">
           {skills.map((skill) => (
@@ -46,6 +45,7 @@ const Skills = () => {
             </motion.div>
           ))}
         </motion.div>
+
         <div className="app__skills-exp">
           {experiences.map((experience) => (
             <motion.div
@@ -69,14 +69,14 @@ const Skills = () => {
                       <h4 className="bold-text"  id={work.name}>{work.name}</h4>
                       <p className="p-text"  id={work.name}>{work.company}</p>
                     </motion.div>
-                    {/* <Tooltip
+                    <Tooltip
                       id={work.name}
                       effect="solid"
                       arrowColor="#fff"
                       className="skills-tooltip"
                     >
                       {work.desc}
-                    </Tooltip> */}
+                    </Tooltip>
                   </>
                 ))}
               </motion.div>

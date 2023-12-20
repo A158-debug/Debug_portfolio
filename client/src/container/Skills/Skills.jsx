@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Tooltip  } from 'react-tooltip';
+// import { Tooltip  } from 'react-tooltip';
+import { v4 as uuidv4 } from 'uuid';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
@@ -22,7 +23,7 @@ const Skills = () => {
       setSkills(data);
     });
   }, []);
-
+ 
   return (
     <>
       <h2 className="head-text">Skills & Experiences</h2>
@@ -47,17 +48,17 @@ const Skills = () => {
         </motion.div>
 
         <div className="app__skills-exp">
-          {experiences.map((experience,idx) => (
+          {experiences.map((experience) => (
             <motion.div
               className="app__skills-exp-item"
-              key={idx}
+              key={uuidv4()}
             >
               <div className="app__skills-exp-year">
                 <p className="bold-text">{experience.year}</p>
               </div>
               <motion.div className="app__skills-exp-works">
                 {experience.works.map((work) => (
-                  <>
+                  <React.Fragment key ={uuidv4()}>
                     <motion.div
                       whileInView={{ opacity: [0, 1] }}
                       transition={{ duration: 0.5 }}
@@ -65,19 +66,20 @@ const Skills = () => {
                       data-tip
                       data-for={work.name}
                       key={work.name}
+    
                     >
                       <h4 className="bold-text"  id={work.name}>{work.name}</h4>
                       <p className="p-text"  id={work.name}>{work.company}</p>
                     </motion.div>
-                    <Tooltip
+                    {/* <Tooltip
                       id={work.name}
                       effect="solid"
                       arrowColor="#fff"
                       className="skills-tooltip"
                     >
                       {work.desc}
-                    </Tooltip>
-                  </>
+                    </Tooltip> */}
+                  </React.Fragment>
                 ))}
               </motion.div>
             </motion.div>

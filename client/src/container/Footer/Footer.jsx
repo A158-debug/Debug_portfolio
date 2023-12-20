@@ -16,10 +16,9 @@ const Footer = () => {
   const [loading, setLoading] = useState(false);
 
   const { username, email, message } = formData;
-
-  useEffect(() => emailjs.init("user_UVUwRDP32CPM2naPvL9MS"), []);
-
-
+ 
+  useEffect(() => emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_TOKEN_ID), []);
+ 
   const handleSubmit = async(e) => {
     e.preventDefault();
     setLoading(true);
@@ -32,7 +31,7 @@ const Footer = () => {
     };
 
     emailjs
-      .send("service_zx6g7ml", "template_zcp7n7f", {
+      .send(process.env.REACT_APP_EMAILJS_SERVICE_ID, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, {
         name: formData.name,
         message: formData.message,
         subject: "Important Message",
@@ -70,7 +69,7 @@ const Footer = () => {
       </div>
 
       {!isFormSubmitted ? (
-        <div className="app__footer-form app__flex">
+        <form className="app__footer-form app__flex">
           <div className="app__flex">
             <input
               className="p-text"
@@ -103,7 +102,7 @@ const Footer = () => {
           <button type="button" className="p-text" onClick={handleSubmit}>
             {!loading ? "Send Message" : "Sending..."}
           </button>
-        </div>
+        </form>
       ) : (
         <div>
           <h3 className="head-text">Thank you for getting in touch! Contact you soon</h3>

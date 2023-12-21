@@ -44,10 +44,10 @@ const Footer = () => {
           email: formData.email,
         }
       )
-      .then((res) => console.log("Message sent successfully"))
       .then(() => {
         setLoading(false);
         setIsFormSubmitted(true);
+        console.log("Message sent successfully");
       })
       .catch((e) => console.log(e));
 
@@ -91,6 +91,7 @@ const Footer = () => {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
+              required
             />
           </div>
           <div className="app__flex">
@@ -103,6 +104,7 @@ const Footer = () => {
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
+              required
             />
           </div>
           <div>
@@ -114,6 +116,7 @@ const Footer = () => {
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
+              required
             />
           </div>
           <button type="button" className="p-text" onClick={handleSubmit}>

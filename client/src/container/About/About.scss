@@ -68,13 +68,13 @@
 
   @media screen and (600px <= width <= 900px) {
     width: 100%;
-    background-color: red;
+
   }
 
   @media screen and (max-width: 600px) {
     font-size: 2rem;
     flex-direction: column;
-    background-color: green;
+
 
     img {
       width: 300px;

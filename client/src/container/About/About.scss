@@ -68,22 +68,26 @@
 
   @media screen and (600px <= width <= 900px) {
     width: 100%;
+    background-color: red;
   }
 
   @media screen and (max-width: 600px) {
     font-size: 2rem;
     flex-direction: column;
+    background-color: green;
 
     img {
       width: 300px;
     }
   }
 
-  @media screen and (min-width: 2000px) {
-    width: 370px;
-    margin: 2rem 4rem;
+  @media screen and (min-width:900px) {
+    width: 90%;;
+    margin: 3rem 2rem;
+    // background-color: yellow;
     img {
-      height: 320px;
+      width: 300px;
+      height: auto;
     }
   }
 }

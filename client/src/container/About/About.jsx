@@ -73,7 +73,7 @@ const About = () => {
             <img src={urlFor(about.imgUrl)} alt={about.title} />
             <div className="app__profile_text" style={{ padding: "10px" }}>
               <h2 className="bold-text">{about.title}</h2>
-              <p className="p-text">{about.description}</p>
+              <p className="desc-text">{about.description}</p>
             </div>
           </motion.div>
         ))}

@@ -75,7 +75,6 @@
     font-size: 2rem;
     flex-direction: column;
 
-
     img {
       width: 300px;
     }
@@ -86,8 +85,19 @@
     margin: 3rem 2rem;
     // background-color: yellow;
     img {
-      width: 300px;
+      width: 250px;
       height: auto;
     }
+  }
+}
+
+.desc-text {
+  font-size: 1rem;
+  text-align: left;
+  // color: var(--gray-color);
+  line-height: 1.5;
+
+  @media screen and (min-width: 2000px) {
+    font-size: 1.75rem;
   }
 }
